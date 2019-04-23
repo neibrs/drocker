@@ -12,7 +12,7 @@ COPY files/60-drupal.cnf /etc/mysql/conf.d/60-drupal.cnf
 # Install Drupal
 RUN rm -rf /var/www/html
 ENV DRUPAL_VERSION 20190321
-RUN git clone -b 8.8.x https://git.drupal.org/project/drupal.git /var/www/html
+RUN git clone -b 8.8.x https://git.drupalcode.org/project/drupal.git /var/www/html
 
 WORKDIR /var/www/html
 ENV COMPOSER_PROCESS_TIMEOUT 1200
