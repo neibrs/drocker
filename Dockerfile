@@ -158,16 +158,6 @@ RUN cd modules/contrib/ajax_links_api && \
 #  patch -p1 < php_condition_check_empty-2678430-13.patch && \
 #  rm php_condition_check_empty-2678430-13.patch
 
-# Install charts
-RUN composer require drupal/charts
-RUN mkdir libraries -p && \
-  wget https://github.com/d3/d3/archive/v3.5.17.zip && \
-  unzip v3.5.17.zip && \
-  mv d3-3.5.17 libraries/d3 && \
-  wget https://github.com/c3js/c3/archive/v0.4.18.zip && \
-  unzip v0.4.18.zip && \
-  mv c3-0.4.18 libraries/c3
-
 # Install entity_print
 RUN composer require drupal/entity_print \
   mikehaertl/phpwkhtmltopdf
@@ -312,11 +302,8 @@ RUN composer require \
 
 
 RUN composer require \
-  drupal/address \
   drupal/ajax_links_api \
 #  drupal/block_class \
-	drupal/block_style_plugins \
-  drupal/charts \
   drupal/coffee \
   drupal/commerce \
   drupal/commerce_recurring:1.x-dev \
@@ -324,23 +311,15 @@ RUN composer require \
   drupal/commerce_autosku \
   drupal/commerce_paypal \
 #  drupal/conditional_fields \
-  drupal/console \
-  drupal/config_rewrite \
   drupal/config_update \
-  drupal/custom_formatters \
-  drush/drush \
   drupal/drush_language \
-  drupal/default_content \
 #  drupal/devel \
 #  drupal/entity_print \
-  drupal/eva \
-  drupal/facets \
 #  drupal/features \
 #  drupal/field_formatter_class \
 #  drupal/field_group \
 ##  drupal/field_widget_class \
 #  drupal/image_delta_formatter \
-  drupal/inline_entity_form \
 #  drupal/languageicons \
   drupal/libraries \
   drupal/ludwig \
@@ -348,21 +327,12 @@ RUN composer require \
   drupal/message \
   drupal/message_notify \
   drupal/message_subscribe \
-  drupal/memcache \
-  drupal/migrate_source_csv \
-  drupal/migrate_source_xls \
-  drupal/migrate_tools \
 #  drupal/page_manager \
 #  drupal/panelizer \
 #  drupal/panels \
-  drupal/pinyin \
-  drupal/quicktabs \
-  drupal/reference_table_formatter \
-  drupal/rules \
 #  drupal/search_api \
 #  drupal/search_api_solr \
   drupal/superfish \
-  drupal/token \
   drupal/views_slideshow \
   kgaut/potx
 
