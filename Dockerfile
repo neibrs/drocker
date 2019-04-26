@@ -2,9 +2,20 @@ FROM jianhe/php
 
 # Install system packages
 RUN apt-get install -y \
+  curl \
   git \
   unzip \
+  sshpass \
   wget
+
+#RUN apt-get install -y gnupg apt-transport-https && \
+#  curl -sS http://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+#  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+#  apt-get update && apt-get install -y yarn
+RUN apt-get install -y gnupg apt-transport-https && \
+  curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+  apt-get install -y nodejs
+RUN curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
 # Mysql server config
 COPY files/60-drupal.cnf /etc/mysql/conf.d/60-drupal.cnf
