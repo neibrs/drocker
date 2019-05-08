@@ -318,7 +318,7 @@ RUN composer require \
   drupal/ajax_links_api \
 #  drupal/block_class \
   drupal/coffee \
-  drupal/commerce \
+  drupal/commerce:2.x-dev \
   drupal/commerce_recurring:1.x-dev \
   drupal/commerce_alipay \
   drupal/commerce_autosku \
