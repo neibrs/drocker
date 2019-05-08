@@ -216,6 +216,7 @@ RUN composer require \
   drupal/address \
   drupal/ajax_links_api \
   drupal/block_style_plugins:dev-2.x \
+	drupal/bootstrap \
   drupal/conditional_fields \
   drupal/custom_formatters \
   drupal/facets \
