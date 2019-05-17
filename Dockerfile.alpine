@@ -7,6 +7,11 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 # postgresql-dev is needed for https://bugs.alpinelinux.org/issues/3642
 RUN set -ex \
 	&& apk add --no-cache --virtual .build-deps \
+	  mariadb \
+	  mariadb-client \
+    apache2 \
+    apache2-utils \
+    curl wget vim htop \
 		coreutils \
 		freetype-dev \
 		libjpeg-turbo-dev \
@@ -20,6 +25,7 @@ RUN set -ex \
 	&& docker-php-ext-install -j "$(nproc)" \
 		gd \
 		opcache \
+#		apache2 \
 		pdo_mysql \
 		pdo_pgsql \
 		zip \
