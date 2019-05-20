@@ -17,3 +17,7 @@ services:
     build:
       context: ./drupal
     container_name: drupal
+  fpm:
+    build:
+      context: ./fpm
+    container_name: fpm
