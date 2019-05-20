@@ -28,8 +28,6 @@ RUN git clone -b 8.x-1.x https://git.drupalcode.org/project/neibrs.git /var/www/
 WORKDIR /var/www/drupal
 ## Use composer china mirror.
 RUN composer install
-#config -g repo.packagist composer https://packagist.laravel-china.org && \
-#  composer install
 
 ###########################################################################
 # Add Project Contribute Modules
