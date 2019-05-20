@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker pull neibrs/drupal_alpine
+docker-compose up -d
 
 docker rm -f drupal_alpine
 docker run -d --name drupal_alpine neibrs/drupal_alpine
