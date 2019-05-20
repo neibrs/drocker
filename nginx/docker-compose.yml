@@ -1,0 +1,13 @@
+version: "2"
+services:
+  nginx:
+#    image: nginx:alpine
+    container_name: nginx
+    build:
+      context: docker
+    restart: always
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    ports:
+      - 80:80
+      - 443:443
