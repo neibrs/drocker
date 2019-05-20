@@ -1,7 +1,7 @@
 FROM alpine:3.9
 ENV TIMEZONE Asia/Shanghai
 # Change resource for china.
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 RUN apk update && apk upgrade
 RUN apk update && apk upgrade && \
 		apk add mariadb mariadb-client \
@@ -37,8 +37,7 @@ RUN apk update && apk upgrade && \
     php7-zlib \
     php7-tokenizer
 
-RUN curl -sS https://getcomposer.org/installer | \
-    php -- --install-dir=/usr/bin --filename=composer
+RUN curl -sS https://install.phpcomposer.com/installer | php -- --install-dir=/usr/bin --filename=composer
 #
 #    sed -i 's#AllowOverride none#AllowOverride All#' /etc/apache2/httpd.conf && \
 #    sed -i 's#Require all denied#Require all granted#' /etc/apache2/httpd.conf && \

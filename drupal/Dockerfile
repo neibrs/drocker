@@ -1,5 +1,5 @@
-FROM neibrs/drocker
-#FROM drupal:fpm-alpine
+#FROM neibrs/drocker
+FROM drupal:fpm-alpine
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 
@@ -129,7 +129,7 @@ RUN cd modules/contrib/migrate_source_xls && \
     git apply -v 2933306-config_entity-4.patch && \
     rm 2933306-config_entity-4.patch
 
-COPY settings.local.php /var/www/drupal/sites/default/settings.local.php
+#COPY settings.local.php /var/www/drupal/sites/default/settings.local.php
 
 # Install Drupal site
 RUN mkdir -p /var/www/drupal/sites/default/files && \
@@ -142,7 +142,7 @@ RUN mkdir -p /var/www/drupal/sites/default/files && \
 
 RUN mkdir -p /var/www/private && \
   chown -R root:root /var/www/private && \
-  echo "\$settings['file_private_path'] = '/Users/nie/tmp';" >> /var/www/drupal/sites/default/settings.php
+  echo "\$settings['file_private_path'] = '/var/www/private';" >> /var/www/drupal/sites/default/settings.php
 
 #RUN cd /var/www/drupal/profiles/neibrs/theme/isp/themes/smart && \
 #  yarn install
