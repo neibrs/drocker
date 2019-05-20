@@ -1,7 +1,7 @@
 version: '3'
 services:
   workspace:
-    image: neibrs/drocker
+    image: neibrs/drocker:dev
     container_name: workspace
     environment:
       XDEBUG_CONFIG: remote_host=docker.for.mac.host.internal

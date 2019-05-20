@@ -77,7 +77,6 @@ RUN chmod u+x /entry.sh
 
 WORKDIR /var/www/localhost/htdocs/
 
-EXPOSE 80
-EXPOSE 3306
+EXPOSE 80 3306
 
 ENTRYPOINT ["/entry.sh"]
