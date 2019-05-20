@@ -11,5 +11,7 @@ services:
     ports:
       - 80:80
   drupal:
-    image: neibrs/drocker:drupal
+#    image: neibrs/drocker:drupal
+    build:
+      context: ./drupal
     container_name: drupal

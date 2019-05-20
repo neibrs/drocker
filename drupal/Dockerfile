@@ -1,5 +1,5 @@
 FROM neibrs/drocker
-#drupal:fpm-alpine
+#FROM drupal:fpm-alpine
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 
@@ -13,7 +13,7 @@ RUN set -ex \
 
 ## TODO ADD yarn
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://install.phpcomposer.com/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 ENV COMPOSER_PROCESS_TIMEOUT 1200
 ######################################################
