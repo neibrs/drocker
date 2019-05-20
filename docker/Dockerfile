@@ -1,5 +1,5 @@
-#FROM alpine:3.9
-FROM php:7.2-fpm-alpine
+FROM alpine:3.9
+#FROM php:7.2-fpm-alpine
 ENV TIMEZONE Asia/Shanghai
 # Change resource for china.
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
@@ -23,7 +23,7 @@ RUN apk update && apk upgrade && \
     php7-json \
     php7-mbstring \
     php7-mcrypt \
-    php7-mysqli \
+#    php7-mysqli \
     php7-mysqlnd \
     php7-opcache \
     php7-openssl \
@@ -50,8 +50,10 @@ RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
     mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld /var/lib/mysql && \
     mysql_install_db --user=mysql --verbose=1 --basedir=/usr --datadir=/var/lib/mysql --rpm > /dev/null && \
     mkdir -p /run/apache2 && chown -R apache:apache /run/apache2 && chown -R apache:apache /var/www/localhost/htdocs/ && \
+    mkdir -p /var/www/private && chown -R apache:apache /var/www/private && \
     sed -i 's#\#LoadModule rewrite_module modules\/mod_rewrite.so#LoadModule rewrite_module modules\/mod_rewrite.so#' /etc/apache2/httpd.conf && \
     sed -i 's#ServerName www.example.com:80#\nServerName localhost:80#' /etc/apache2/httpd.conf && \
+    sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/httpd.conf && \
     sed -i 's/skip-networking/\#skip-networking/i' /etc/my.cnf.d/mariadb-server.cnf && \
     sed -i '/mariadb\]/a log_error = \/var\/lib\/mysql\/error.log' /etc/my.cnf.d/mariadb-server.cnf && \
     sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/my.cnf.d/mariadb-server.cnf && \
@@ -59,9 +61,13 @@ RUN cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && \
     sed -i '/mariadb\]/a general_log = ON' /etc/my.cnf.d/mariadb-server.cnf && \
     sed -i '/mariadb\]/a general_log_file = \/var\/lib\/mysql\/query.log' /etc/my.cnf.d/mariadb-server.cnf
 
+RUN sed -i 's#;extension=pdo_mysql#extension=pdo_mysql#' /etc/php7/php.ini
+
 RUN sed -i 's#display_errors = Off#display_errors = On#' /etc/php7/php.ini && \
     sed -i 's#upload_max_filesize = 2M#upload_max_filesize = 100M#' /etc/php7/php.ini && \
     sed -i 's#post_max_size = 8M#post_max_size = 100M#' /etc/php7/php.ini && \
+    sed -i 's#memory_limit = 128M#memory_limit = 1280M#' /etc/php7/php.ini && \
+    sed -i 's#max_execution_time = 30#max_execution_time = 800#' /etc/php7/php.ini && \
     sed -i 's#session.cookie_httponly =#session.cookie_httponly = true#' /etc/php7/php.ini && \
     sed -i 's#error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT#error_reporting = E_ALL#' /etc/php7/php.ini
 
