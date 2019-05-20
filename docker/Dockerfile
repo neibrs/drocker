@@ -1,7 +1,7 @@
 FROM alpine:3.9
 ENV TIMEZONE Asia/Shanghai
 # Change resource for china.
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
+#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 RUN apk update && apk upgrade
 RUN apk update && apk upgrade && \
 		apk add mariadb mariadb-client \
