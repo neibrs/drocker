@@ -12,13 +12,7 @@ services:
       - ./drupal/web:/var/www/localhost/htdocs
     ports:
       - 83:80
-    ### Drupal ######################################################
   drupal:
     container_name: alpine_drupal
     build:
       context: ./drupal
-#      args:
-#        - INSTALL_NODE=${WORKSPACE_INSTALL_NODE}
-#        - NPM_REGISTRY=${WORKSPACE_NPM_REGISTRY}
-#        - NODE_VERSION=${WORKSPACE_NODE_VERSION}
-#        - YARN_VERSION=${WORKSPACE_YARN_VERSION}
