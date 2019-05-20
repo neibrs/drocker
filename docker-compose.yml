@@ -11,7 +11,7 @@ services:
     volumes:
       - ./drupal/web:/var/www/localhost/htdocs
     ports:
-      - 83:80
+      - 80:80
   drupal:
     container_name: alpine_drupal
     build:
