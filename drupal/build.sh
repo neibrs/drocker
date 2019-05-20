@@ -14,6 +14,10 @@ sudo docker cp drupal_alpine:/var/www/html ./web
 docker stop drupal_alpine
 docker rm drupal_alpine
 
-sudo chown -R apache.apache ./web
-sudo chmod -R g+w ./web
+# For linux
+#sudo chown -R apache.apache ./web
+#sudo chmod -R g+w ./web
 
+# For Mac
+sudo chown -R $USER ./web
+sudo chmod -R g+w ./web
