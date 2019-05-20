@@ -1,9 +1,7 @@
 version: '3'
 services:
   workspace:
-    #    image: neibrs/drocker
-    build:
-      context: ./docker
+    image: neibrs/drocker
     container_name: workspace
     environment:
       XDEBUG_CONFIG: remote_host=docker.for.mac.host.internal
@@ -13,6 +11,5 @@ services:
     ports:
       - 80:80
   drupal:
-    container_name: alpine_drupal
-    build:
-      context: ./drupal
+    image: neibrs/drocker:drupal
+    container_name: drupal
