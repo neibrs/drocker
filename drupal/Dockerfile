@@ -1,7 +1,7 @@
-FROM neibrs/docker
+FROM neibrs/drocker
 #drupal:fpm-alpine
 
-#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
 
 RUN set -ex \
   && apk add --no-cache \
@@ -23,7 +23,7 @@ RUN git clone -b 8.8.x https://github.com/drupal/drupal.git /var/www/drupal
 ###########################################################################
 # Add Project
 ###########################################################################
-RUN git clone -b 8.x-1.x https://git.drupalcode.org/project/neibrs.git /var/www/drupal/profiles/neibrs
+#RUN git clone -b 8.x-1.x https://git.drupalcode.org/project/neibrs.git /var/www/drupal/profiles/neibrs
 
 WORKDIR /var/www/drupal
 ## Use composer china mirror.
