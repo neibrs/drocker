@@ -7,7 +7,7 @@ services:
       XDEBUG_CONFIG: remote_host=docker.for.mac.host.internal
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - ./drupal/web:/var/www/localhost/htdocs
+      - ./web:/var/www/localhost/htdocs
     ports:
       - 80:80
   drupal:
