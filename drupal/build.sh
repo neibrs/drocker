@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker-compose up -d
+docker-compose up -d drupal
 
 docker rm -f drupal
 docker run -d --name drupal neibrs/drocker:drupal
