@@ -1,9 +1,9 @@
 version: '3'
 services:
   workspace:
-#    image: neibrs/drocker:dev
-    build:
-      context: ./docker
+    image: neibrs/drocker:dev
+#    build:
+#      context: ./docker
     container_name: workspace
     environment:
       XDEBUG_CONFIG: remote_host=docker.for.mac.host.internal
@@ -11,13 +11,9 @@ services:
     volumes:
       - ./web:/var/www/localhost/htdocs
     ports:
-      - 8080:80
+      - 80:80
   drupal:
-#    image: neibrs/drocker:drupal
-    build:
-      context: ./drupal
+    image: neibrs/drocker:drupal
+#    build:
+#      context: ./drupal
     container_name: drupal
-  fpm:
-    build:
-      context: ./fpm
-    container_name: fpm
