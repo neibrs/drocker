@@ -1,5 +1,5 @@
 FROM alpine:3.9
-#FROM php:7.2-fpm-alpine
+
 ENV TIMEZONE Asia/Shanghai
 # Change resource for china.
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories
